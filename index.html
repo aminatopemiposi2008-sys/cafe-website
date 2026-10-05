@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Ember Cafe | A Little Warmth in Every Moment</title>
+
+    <style>
+        /* =========================
+           RESET & BASE STYLES
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --cream: #f7efe3;
+            --beige: #d6bfa6;
+            --brown: #4a342c;
+            --dark-brown: #2d201b;
+            --black: #15110f;
+            --white: #ffffff;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+            color: var(--brown);
+            background: var(--cream);
+        }
+
+
+        /* =========================
+           HEADER / NAVIGATION
+        ========================= */
+
+        header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 10;
+
+            width: 100%;
+            padding: 22px 6%;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            color: var(--brown);
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        nav a {
+            position: relative;
+
+            color: var(--brown);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+
+            transition: color 0.3s ease;
+        }
+
+        nav a::after {
+            content: "";
+
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+
+            width: 0;
+            height: 2px;
+
+            background-color: var(--brown);
+
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after,
+        nav a:focus-visible::after {
+            width: 100%;
+        }
+
+
+        /* =========================
+           HERO SECTION
+        ========================= */
+
+        main {
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+
+            padding: 120px 8% 80px;
+
+            background:
+                linear-gradient(
+                    rgba(0, 0, 0, 0.45),
+                    rgba(0, 0, 0, 0.45)
+                ),
+                url("images (4).jfif");
+
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+
+            color: var(--cream);
+        }
+
+        .hero-content {
+            max-width: 650px;
+        }
+
+        .eyebrow {
+            margin-bottom: 15px;
+
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+
+            color: var(--beige);
+        }
+
+        h1 {
+            margin-bottom: 20px;
+
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            line-height: 1.05;
+            font-weight: 700;
+        }
+
+        .hero-text {
+            margin-bottom: 35px;
+
+            font-size: 1.15rem;
+            line-height: 1.7;
+
+            color: var(--cream);
+        }
+
+        .btn {
+            display: inline-block;
+
+            padding: 14px 28px;
+
+            border: 2px solid var(--cream);
+            border-radius: 6px;
+
+            background-color: var(--cream);
+            color: var(--brown);
+
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+
+            transition:
+                background-color 0.3s ease,
+                color 0.3s ease,
+                transform 0.3s ease;
+        }
+
+        .btn:hover,
+        .btn:focus-visible {
+            background-color: transparent;
+            color: var(--cream);
+            transform: translateY(-3px);
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            min-height: 60px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 15px;
+
+            background-color: var(--black);
+            color: #d8d0c9;
+
+            text-align: center;
+            font-size: 0.85rem;
+        }
+
+
+        /* =========================
+           RESPONSIVE DESIGN
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            header {
+                padding: 20px;
+                flex-direction: column;
+                gap: 18px;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            nav ul {
+                gap: 20px;
+            }
+
+            nav a {
+                font-size: 0.85rem;
+            }
+
+            main {
+                padding: 150px 25px 70px;
+                background-position: center;
+            }
+
+            h1 {
+                font-size: clamp(2.7rem, 13vw, 4rem);
+            }
+
+            .hero-text {
+                font-size: 1rem;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+
+        /* =========================
+           ACCESSIBILITY
+        ========================= */
+
+        a:focus-visible {
+            outline: 3px solid var(--beige);
+            outline-offset: 4px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">EMBER CAFE</div>
+
+        <nav aria-label="Main navigation">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <main>
+        <div class="hero-content">
+
+            <p class="eyebrow">Welcome to Ember</p>
+
+            <h1>
+                A Little Warmth
+                <br>
+                In Every Moment
+            </h1>
+
+            <p class="hero-text">
+                Fresh coffee, delicious bites,
+                <br>
+                and a place to slow down.
+            </p>
+
+            <a class="btn" href="impwebsite.html">
+                EXPLORE MENU
+            </a>
+
+        </div>
+    </main>
+
+
+    <footer>
+        <p>&copy; 2026 Ember Cafe. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
